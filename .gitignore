@@ -1,0 +1,5 @@
+dist/
+kb/*.msu
+kb/*.der
+*.exe
+*.log
