@@ -1,12 +1,14 @@
-# windows2008r2-winhttp-fix
+# windows7-2008r2-winhttp-fix
 
-Instalador (Inno Setup) que habilita **TLS 1.1/1.2 en WinHTTP** en Windows Server 2008 R2 y
-Windows 7 SP1, para que instaladores modernos puedan conectarse a servidores con HTTPS actual.
+Instalador (Inno Setup) que habilita **TLS 1.1/1.2 en WinHTTP** en **Windows 7 SP1** y **Windows Server 2008 R2**,
+para que instaladores modernos puedan conectarse a servidores con HTTPS actual. Ambos sistemas son Windows 6.1
+y comparten los mismos KB, por eso un solo instalador sirve para los dos. No cubre Vista ni Server 2008 (sin R2),
+que son 6.0 y usan otros paquetes.
 
 ## El problema
 
 Al instalar el agente de TacticalRMM (o cualquier instalador que use `WinHttp.WinHttpRequest`)
-en Windows Server 2008 R2 sale:
+en Windows 7 o Windows Server 2008 R2 sale:
 
 ```
 Usuario o contraseña incorrectos.
@@ -34,13 +36,13 @@ hace falta.
 
 ## Uso
 
-Ejecutar `winhttp-fix-win2008r2.exe` como administrador y reiniciar al terminar.
+Ejecutar `winhttp-fix-win7-2008r2.exe` como administrador y reiniciar al terminar.
 
 Silencioso (para scripts o el propio RMM):
 
 ```
-winhttp-fix-win2008r2.exe /VERYSILENT /NORESTART
-winhttp-fix-win2008r2.exe /VERYSILENT /NORESTART /TASKS="!isrg"   # sin importar la raíz ISRG
+winhttp-fix-win7-2008r2.exe /VERYSILENT /NORESTART
+winhttp-fix-win7-2008r2.exe /VERYSILENT /NORESTART /TASKS="!isrg"   # sin importar la raíz ISRG
 ```
 
 El log queda en `%TEMP%\Setup Log <fecha>.txt` (`SetupLogging=yes`); ahí se ve el código de

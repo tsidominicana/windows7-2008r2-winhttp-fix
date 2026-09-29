@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; Arreglo de WinHTTP/TLS 1.2 para Windows Server 2008 R2 y Windows 7 SP1
+; Arreglo de WinHTTP/TLS 1.2 para Windows 7 SP1 y Windows Server 2008 R2
 ;
 ; Sin esto, los instaladores que usan WinHTTP (p. ej. el agente de TacticalRMM)
 ; fallan con "WinHttp.WinHttpRequest: Error de compatibilidad del canal seguro"
@@ -13,10 +13,10 @@
 ;   5. Pide reinicio
 ;
 ; Compilar:   powershell -File build.ps1
-; Silencioso: winhttp-fix-win2008r2.exe /VERYSILENT /NORESTART   (sin raiz: /TASKS="!isrg")
+; Silencioso: winhttp-fix-win7-2008r2.exe /VERYSILENT /NORESTART   (sin raiz: /TASKS="!isrg")
 ; ---------------------------------------------------------------------------
 
-#define AppName      "Arreglo TLS 1.2 para Windows 2008 R2"
+#define AppName      "Arreglo TLS 1.2 para Windows 7 y 2008 R2"
 #ifndef AppVersion
   #define AppVersion "1.0.0"
 #endif
@@ -41,7 +41,7 @@ OnlyBelowVersion=6.2
 ArchitecturesInstallIn64BitMode=x64compatible
 AlwaysRestart=yes
 OutputDir=dist
-OutputBaseFilename=winhttp-fix-win2008r2
+OutputBaseFilename=winhttp-fix-win7-2008r2
 Compression=lzma2/max
 SolidCompression=yes
 WizardStyle=classic
@@ -51,7 +51,7 @@ SetupLogging=yes
 Name: "es"; MessagesFile: "compiler:Languages\Spanish.isl"
 
 [Messages]
-es.WelcomeLabel1=Arreglo de TLS 1.2 para Windows 2008 R2
+es.WelcomeLabel1=Arreglo de TLS 1.2 para Windows 7 y 2008 R2
 es.WelcomeLabel2=Este asistente habilita TLS 1.1/1.2 en WinHTTP para que instaladores como el del agente de TacticalRMM puedan conectarse al servidor.%n%nInstala dos actualizaciones de Microsoft (KB3140245 y KB3080079), ajusta el registro y necesitara reiniciar el equipo.
 es.FinishedHeadingLabel=Cambios aplicados
 es.FinishedLabel=Reinicia el equipo para que los cambios surtan efecto y vuelve a ejecutar el instalador que fallaba.
